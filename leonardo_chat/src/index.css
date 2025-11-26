@@ -126,3 +126,137 @@ button:focus-visible {
   background: #111827; color: #fff;
   border-radius: 8px;
 }
+
+/* === Chat layout === */
+.chat-layout {
+  max-width: 900px;
+  margin: 24px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-title-main {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.chat-title-sub {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.framed {
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  padding: 16px;
+  background: var(--card);
+}
+
+/* message rows */
+.msg-row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.msg-row.from-leo {
+  justify-content: flex-start;
+}
+
+.msg-row.from-user {
+  justify-content: flex-end;
+}
+
+.msg-bubble-block {
+  max-width: 70%;
+}
+
+.msg-name {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 2px;
+  display: block;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.avatar-leo {
+  background: #facc15; /* warm yellow */
+}
+
+.avatar-user {
+  background: #60a5fa; /* blue */
+  color: white;
+}
+
+.bubble {
+  background: var(--bubble-leo);
+  border-radius: 14px;
+  padding: 8px 12px;
+  line-height: 1.5;
+}
+
+.msg-row.from-user .bubble {
+  background: var(--bubble-user);
+}
+
+.bubble.thinking {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* input + footer buttons */
+.chat-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chat-footer-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* button styles extensions */
+.btn.subtle {
+  background: transparent;
+  border: 1px solid #cbd5e1;
+  color: var(--fg);
+}
+
+.btn.danger {
+  background: #ef4444;
+  color: white;
+  border: none;
+}
+
+.btn.danger:hover {
+  background: #dc2626;
+}
+
+@media (max-width: 720px) {
+  .msg-bubble-block {
+    max-width: 80%;
+  }
+}
