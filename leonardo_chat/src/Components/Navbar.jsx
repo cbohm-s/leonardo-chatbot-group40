@@ -1,21 +1,49 @@
-import { Link } from "react-router-dom";
-import { useSettings } from "../context/SettingsContext.jsx";
+// src/Components/Navbar.jsx
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
-  const { theme, setTheme } = useSettings();
   return (
-    <header className="nav">
-      <div className="brand">Leonardo Chatbot</div>
-      <nav className="links">
-        <Link to="/">Home</Link>
-        <Link to="/chat">Chat</Link>
-        <Link to="/settings">Accessibility</Link>
-        <button
-          className="icon-btn"
-          aria-label="Toggle theme"
-          onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-          title="Light/Dark"
-        >{theme === "light" ? "🌙" : "☀️"}</button>
+    <header>
+      {/* Skip link for keyboard users */}
+      <a className="skip-link" href="#main">
+        Skip to main content
+      </a>
+
+      <nav aria-label="Primary">
+        <ul className="nav-list" role="list">
+          <li>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                "btn btn-home" + (isActive ? " active" : "")
+              }
+            >
+              Home
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/chat"
+              className={({ isActive }) =>
+                "btn btn-chat" + (isActive ? " active" : "")
+              }
+            >
+              Chat
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/settings"
+              className={({ isActive }) =>
+                "btn btn-a11y" + (isActive ? " active" : "")
+              }
+            >
+              Settings
+            </NavLink>
+          </li>
+        </ul>
       </nav>
     </header>
   );

@@ -1,5 +1,6 @@
 import Toggle from "./Toggle.jsx";
-import { useSettings } from "../context/SettingsContext.jsx";
+import { useSettings } from "../Context/SettingsContext.jsx";
+
 
 export default function SettingsModel() {
   const { highContrast, setHighContrast, fontScale, setFontScale, theme, setTheme } = useSettings();

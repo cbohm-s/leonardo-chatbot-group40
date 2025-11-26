@@ -66,3 +66,63 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* Layout */
+.nav-list {
+  display: flex;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Base “button-like link” */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 7.5rem;             /* larger hit target */
+  padding: 10px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #fff;
+  border: 2px solid transparent;
+  transition: transform .06s ease, opacity .15s ease;
+}
+.btn:active { transform: scale(.98); }
+
+/* Visible focus for keyboard users */
+.btn:focus-visible {
+  outline: 3px solid #111827;    /* near-black */
+  outline-offset: 2px;
+}
+
+/* Colors (AA contrast on white backgrounds) */
+.btn-home { background-color: #1e40af; }         /* indigo-800 */
+.btn-home:hover { opacity: .92; }
+.btn-home.active { background-color: #1e3a8a; }  /* indigo-900 */
+
+.btn-chat { background-color: #15803d; }         /* green-700 */
+.btn-chat:hover { opacity: .92; }
+.btn-chat.active { background-color: #166534; }  /* green-800 */
+
+.btn-a11y { background-color: #6d28d9; }         /* purple-700 */
+.btn-a11y:hover { opacity: .92; }
+.btn-a11y.active { background-color: #5b21b6; }  /* purple-800 */
+
+/* Skip link for screen readers & keyboard users */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px; height: 1px; overflow: hidden;
+}
+.skip-link:focus {
+  position: static;
+  width: auto; height: auto;
+  margin: 8px 16px;
+  padding: 8px 12px;
+  background: #111827; color: #fff;
+  border-radius: 8px;
+}
