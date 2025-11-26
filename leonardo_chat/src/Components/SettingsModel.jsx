@@ -1,29 +1,57 @@
-import Toggle from "./Toggle.jsx";
+import { useEffect, useState } from "react";
 import { useSettings } from "../Context/SettingsContext.jsx";
 
-
 export default function SettingsModel() {
-  const { highContrast, setHighContrast, fontScale, setFontScale, theme, setTheme } = useSettings();
+  const { settings, updateSettings, resetSettings } = useSettings();
+  const [draft, setDraft] = useState(settings);
+  const [status, setStatus] = useState("");
+
+  useEffect(() => {
+    setDraft(settings);
+  }, [settings]);
+
+  function handleSave() {
+    updateSettings(draft);
+    setStatus("Settings saved");
+    setTimeout(() => setStatus(""), 1500);
+  }
+
+  function handleCancel() {
+    resetSettings();
+    setStatus("Settings reset to defaults");
+    setTimeout(() => setStatus(""), 1500);
+  }
+
   return (
-    <section className="settings" role="dialog" aria-labelledby="settingsTitle" aria-modal="true">
+    <section
+      className="settings"
+      role="dialog"
+      aria-labelledby="settingsTitle"
+      aria-modal="true"
+    >
       <h1 id="settingsTitle">Accessibility Settings</h1>
 
       <div className="setting">
-        <Toggle
-          id="hc"
-          checked={highContrast}
-          onChange={setHighContrast}
-          label="Enable high-contrast mode"
-        />
+        <label>
+          <input
+            type="checkbox"
+            checked={draft.highContrast}
+            onChange={(e) =>
+              setDraft({ ...draft, highContrast: e.target.checked })
+            }
+          />{" "}
+          Enable high-contrast mode
+        </label>
       </div>
 
       <div className="setting">
         <label htmlFor="font">Increase font size</label>
         <select
           id="font"
-          value={fontScale}
-          onChange={(e)=> setFontScale(Number(e.target.value))}
-          aria-label="Font size"
+          value={draft.fontScale}
+          onChange={(e) =>
+            setDraft({ ...draft, fontScale: Number(e.target.value) })
+          }
         >
           <option value={90}>Small</option>
           <option value={100}>Default</option>
@@ -34,25 +62,54 @@ export default function SettingsModel() {
 
       <div className="setting">
         <label htmlFor="theme">Theme</label>
-        <select id="theme" value={theme} onChange={(e)=>setTheme(e.target.value)}>
+        <select
+          id="theme"
+          value={draft.theme}
+          onChange={(e) =>
+            setDraft({ ...draft, theme: e.target.value })
+          }
+        >
           <option value="light">Light</option>
           <option value="dark">Dark</option>
         </select>
       </div>
 
+      <div className="setting">
+        <label>
+          <input
+            type="checkbox"
+            checked={draft.reducedMotion}
+            onChange={(e) =>
+              setDraft({ ...draft, reducedMotion: e.target.checked })
+            }
+          />{" "}
+          Reduce motion (disable animations)
+        </label>
+      </div>
+
       <details className="setting">
         <summary>Keyboard Navigation help</summary>
         <ul>
-          <li><kbd>Tab</kbd> move focus</li>
-          <li><kbd>Enter</kbd> activate</li>
-          <li><kbd>Esc</kbd> close dialogs</li>
+          <li><kbd>Tab</kbd> – move focus</li>
+          <li><kbd>Enter</kbd> – activate focused control</li>
+          <li><kbd>Esc</kbd> – close dialogs</li>
         </ul>
       </details>
 
       <div className="btn-row">
-        <button className="btn primary" onClick={()=>alert("Settings saved")}>Save settings</button>
-        <button className="btn" onClick={()=>history.back()}>Cancel</button>
+        <button className="btn primary" onClick={handleSave}>
+          Save settings
+        </button>
+        <button className="btn subtle" onClick={handleCancel}>
+          Cancel
+        </button>
       </div>
+
+      {status && (
+        <p className="settings-status" role="status">
+          {status}
+        </p>
+      )}
     </section>
   );
 }
