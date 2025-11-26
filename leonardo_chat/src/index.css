@@ -201,11 +201,12 @@ button:focus-visible {
 }
 
 .avatar-leo {
-  background: #facc15; /* warm yellow */
+  background: #da9253; /* warm yellow */
 }
 
+
 .avatar-user {
-  background: #60a5fa; /* blue */
+  background: #76a8e6; /* blue */
   color: white;
 }
 
@@ -259,4 +260,35 @@ button:focus-visible {
   .msg-bubble-block {
     max-width: 80%;
   }
+}
+
+/* === Input row spacing fix === */
+.input-row {
+  display: flex;
+  gap: 14px;                 /* space between input and Send button */
+  margin-top: 12px;          /* spacing above the row */
+  align-items: center;
+}
+
+.input-row input {
+  flex: 1;                   /* input expands to fill space */
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  font-size: 1rem;
+  background: #1e1e1e;
+  color: white;
+}
+
+.btn.primary {
+  background: #2563eb;       /* blue Send button */
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.btn.primary:hover {
+  background: #1d4ed8;
 }
