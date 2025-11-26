@@ -1,0 +1,59 @@
+.home-container {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .home-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .leo-image {
+    width: 280px;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .home-intro {
+    font-style: italic;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+  }
+  
+  .button-row {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  .start-btn {
+    padding: 12px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #2563eb; /* Blue */
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  .start-btn:hover {
+    background-color: #1d4ed8;
+  }
+  
+  .about-btn {
+    padding: 12px 20px;
+    font-size: 1rem;
+    color: #333;
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.2s;
+  }
+  
+  .about-btn:hover {
+    background-color: #f3f3f3;
+  }
+  
