@@ -87,6 +87,39 @@ a {
   gap: 8px;
 }
 
+
+
+.nav-link {
+  padding: 6px 10px;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+}
+
+.icon-toggle {
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  background: transparent;
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.icon-toggle:hover {
+  background: rgba(148, 163, 184, 0.25);
+}
+
+.icon-toggle.active {
+  background: #fbbf24;       /* highlight active theme */
+  border-color: #f59e0b;
+}
+
+
 /* Button-style links */
 .btn {
   display: inline-flex;

@@ -1,49 +1,54 @@
-// src/Components/Navbar.jsx
 import { NavLink } from "react-router-dom";
+import { useSettings } from "../Context/SettingsContext.jsx";
 
 export default function Navbar() {
+  const { settings, updateSettings } = useSettings();
+  const theme = settings.theme;
+
+  function setTheme(mode) {
+    updateSettings({ theme: mode });
+  }
+
   return (
-    <header>
-      {/* Skip link for keyboard users */}
-      <a className="skip-link" href="#main">
-        Skip to main content
-      </a>
+    <header className="nav">
+      <div className="brand">Leonardo Chatbot</div>
 
-      <nav aria-label="Primary">
-        <ul className="nav-list" role="list">
-          <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                "btn btn-home" + (isActive ? " active" : "")
-              }
-            >
-              Home
-            </NavLink>
-          </li>
+      <nav className="links">
+        <NavLink to="/" className="nav-link">
+          Home
+        </NavLink>
+        <NavLink to="/chat" className="nav-link">
+          Chat
+        </NavLink>
+        <NavLink to="/settings" className="nav-link">
+          Settings
+        </NavLink>
 
-          <li>
-            <NavLink
-              to="/chat"
-              className={({ isActive }) =>
-                "btn btn-chat" + (isActive ? " active" : "")
-              }
-            >
-              Chat
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              to="/settings"
-              className={({ isActive }) =>
-                "btn btn-a11y" + (isActive ? " active" : "")
-              }
-            >
-              Settings
-            </NavLink>
-          </li>
-        </ul>
+        {/* Sun / Moon theme toggle */}
+        <div
+          className="theme-toggle"
+          role="group"
+          aria-label="Colour theme"
+        >
+          <button
+            className={`icon-toggle ${
+              theme === "light" ? "active" : ""
+            }`}
+            onClick={() => setTheme("light")}
+            aria-label="Switch to light mode"
+          >
+            ☀️
+          </button>
+          <button
+            className={`icon-toggle ${
+              theme === "dark" ? "active" : ""
+            }`}
+            onClick={() => setTheme("dark")}
+            aria-label="Switch to dark mode"
+          >
+            🌙
+          </button>
+        </div>
       </nav>
     </header>
   );
