@@ -18,7 +18,8 @@ export function SettingsProvider({ children }) {
     root.dataset.theme = settings.theme;                       // light | dark
     root.dataset.hc = settings.highContrast ? "1" : "0";       // high contrast
     root.dataset.motion = settings.reducedMotion ? "reduced" : "normal";
-    root.style.setProperty("--font-scale", `${settings.fontScale}%`);
+    root.style.setProperty("--font-scale", String(settings.fontScale));
+    
   }, [settings]);
 
   const value = {
