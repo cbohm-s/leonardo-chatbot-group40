@@ -1,4 +1,4 @@
-/* === Global theme variables controlled by SettingsContext === */
+/* Global theme variables controlled by SettingsContext */
 
 :root {
   --bg: #ffffff;
@@ -20,7 +20,7 @@ html[data-theme="dark"] {
   --bubble-leo: #020617;
 }
 
-/* High contrast override */
+/* High contrast */
 html[data-hc="1"] {
   --bg: #000000;
   --fg: #ffffff;
@@ -38,7 +38,7 @@ html[data-motion="reduced"] * {
   transition: none !important;
 }
 
-/* === Global element styles === */
+/*  element styles  */
 
 *,
 *::before,
@@ -67,7 +67,7 @@ a {
   padding: 0 16px;
 }
 
-/* === Navbar === */
+/* Navbar  */
 
 .nav {
   display: flex;
@@ -165,7 +165,7 @@ a {
   margin-top: 16px;
 }
 
-/* === Home page === */
+/*  Home page  */
 
 .home {
   display: grid;
@@ -192,7 +192,7 @@ a {
   gap: 16px;
 }
 
-/* === Chat layout === */
+/*  Chat layout */
 
 .chat-layout {
   max-width: 900px;
@@ -327,7 +327,7 @@ a {
   gap: 10px;
 }
 
-/* === Settings page === */
+/* Settings page */
 
 .settings {
   background: var(--card);
