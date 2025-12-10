@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import persona from "../Data/persona.json";
-import prompts from "../Data/prompts.json";
 
 export default function ChatBox() {
   const [message, setMessage] = useState("");
@@ -21,25 +20,39 @@ export default function ChatBox() {
     }
   }, [messages]);
 
-  function handleSend() {
-    const text = message.trim();
-    if (!text) return;
+  async function sendToBackend(userMessage) {
+  try {
+    const res = await fetch("http://localhost:5000/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: userMessage })
+    });
 
-    // add user message
-    setMessages(prev => [...prev, { from: "user", text }]);
-    setMessage("");
-    setIsThinking(true);
-
-    // simple JSON-based reply logic
-    const lower = text.toLowerCase();
-    const match = prompts.find(p => lower.includes(p.whenIncludes));
-    const reply = match ? match.reply : persona.fallback;
-
-    setTimeout(() => {
-      setMessages(prev => [...prev, { from: "leo", text: reply }]);
-      setIsThinking(false);
-    }, 500);
+    const data = await res.json();
+    return data.response; 
+  } catch (err) {
+    console.error("Backend error:", err);
+    return "My thoughts elude me at the moment…";
   }
+}
+
+  async function handleSend() {
+  const text = message.trim();
+  if (!text) return;
+
+  // Add user message
+  setMessages(prev => [...prev, { from: "user", text }]);
+  setMessage("");
+  setIsThinking(true);
+
+  // Get response from backend
+  const reply = await sendToBackend(text);
+
+  // Add Leonardo's message
+  setMessages(prev => [...prev, { from: "leo", text: reply }]);
+  setIsThinking(false);
+}
+
 
   function handleNewChat() {
     setMessages([{ from: "leo", text: persona.greeting }]);

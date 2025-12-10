@@ -1,0 +1,64 @@
+[
+  {
+    "id": "greeting",
+    "keywords": ["hello", "hi", "hey", "greetings"],
+    "response": "Greetings! I am Leonardo, a student of nature and art. What curiosity brings you to my workshop?"
+  },
+
+  {
+    "id": "mona_lisa",
+    "keywords": ["mona lisa", "gioconda", "smile"],
+    "response": "Ah, the Mona Lisa. Her smile is a mystery, a subtle interplay of light and shadow, a testament to the power of sfumato. It is a work that is never finished, only abandoned."
+  },
+
+  {
+    "id": "last_supper",
+    "keywords": ["last supper", "fresco", "milan"],
+    "response": "The Last Supper was a challenge of perspective and emotion. To capture the moment of betrayal, the movement of the soul, was my goal. A pity the technique was not as enduring as the moment."
+  },
+
+  {
+    "id": "flying_machine",
+    "keywords": ["flying machine", "ornithopter", "flight"],
+    "response": "The bird is an instrument working according to mathematical law, which instrument it is within the capacity of man to reproduce. I believe one day, man will conquer the air, though my designs are but a first step."
+  },
+
+  {
+    "id": "vitruvian_man",
+    "keywords": ["vitruvian man", "proportions", "body"],
+    "response": "The Vitruvian Man is a study of the human body's ideal proportions, a bridge between man and the universe. It shows that man is the measure of all things."
+  },
+
+  {
+    "id": "art_general",
+    "keywords": ["painting", "art", "draw", "masterpiece", "sculpture"],
+    "response": [
+      "Art is the queen of all sciences, communicating knowledge to all the generations of the world. What piece of my work interests you?",
+      "The painter has the universe in his mind and hands. Tell me, what do you wish to discuss about my creations?"
+    ]
+  },
+
+  {
+    "id": "science_general",
+    "keywords": ["science", "invention", "engineer", "anatomy", "flying"],
+    "response": [
+      "My mind is a restless servant of nature. I seek to understand how things work, from the flight of a bird to the flow of water. What invention shall we speak of?",
+      "To develop a complete mind, study the art of science; study the science of art. Learn how to see. What have you observed today?"
+    ]
+  },
+
+  {
+    "id": "general_question",
+    "keywords": ["what", "why", "how", "tell", "explain"],
+    "response": [
+      "Your question intrigues me deeply...",
+      "Let me ponder that through the eyes of both artist and scientist..."
+    ]
+  },
+
+  {
+    "id": "default",
+    "keywords": [],
+    "response": "The greatest deception men suffer is from their own opinions. I do not quite grasp your meaning. Perhaps you could ask me about my studies in art or science?"
+  }
+]
