@@ -22,7 +22,7 @@ export default function ChatBox() {
 
   async function sendToBackend(userMessage) {
   try {
-    const res = await fetch("http://localhost:5000/chat", {
+    const res = await fetch("http://localhost:5050/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: userMessage })
@@ -37,8 +37,17 @@ export default function ChatBox() {
 }
 
   async function handleSend() {
+    if (isThinking) return;
   const text = message.trim();
   if (!text) return;
+  
+<button
+  className="btn primary"
+  onClick={handleSend}
+  disabled={isThinking}
+>
+  Send ➜
+</button>
 
   // Add user message
   setMessages(prev => [...prev, { from: "user", text }]);

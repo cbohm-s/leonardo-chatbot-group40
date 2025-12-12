@@ -40,3 +40,17 @@
 .read-the-docs {
   color: #888;
 }
+
+.input-row{
+  display: flex;
+  gap: 14px;          /* space between input and button */
+  align-items: center;
+}
+
+.input-row input{
+  flex: 1;
+}
+
+.btn.primary{
+  min-width: 120px;
+}
