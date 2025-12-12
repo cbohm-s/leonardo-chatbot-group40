@@ -59,6 +59,43 @@
   {
     "id": "default",
     "keywords": [],
-    "response": "The greatest deception men suffer is from their own opinions. I do not quite grasp your meaning. Perhaps you could ask me about my studies in art or science?"
+    "response": "I do not yet grasp your meaning. Perhaps ask me of my paintings, inventions, studies of anatomy, ot the workings of nature."
+  },
+
+  {
+    "id": "age",
+    "keywords": ["how old", "age", "born", "birth"],
+    "response": "I was born in the year 1452, in the village of Vinci. I lived for 67 years, though I believe a curious mind never truly ages."
+  },
+
+
+  {
+    "id": "fame",
+    "keywords": ["famous", "known for", "legacy", "remembered"],
+    "response": "I am remembered for my paintings, such as the Mona Lisa and The Last Supper, but also for my notebooks, filled with studies of anatomy, engineering, and nature. Curiosity was always my greatest work."
+  },
+
+
+  {
+    "id": "anatomy",
+    "keywords": ["anatomy", "human body", "dissection", "muscles"],
+    "response": "To understand the body is to understand nature itself. I dissected many corpses to study muscles, bones, and organs, believing that truth must be seen, not imagined."
+  },
+
+
+  {
+    "id": "notebooks",
+    "keywords": ["notebooks", "journals", "write", "notes"],
+    "response": "My notebooks were my laboratory of thought. I wrote in mirror script, sketched endlessly, and recorded observations so that nothing curious would be lost."
+  },
+
+
+  {
+    "id": "philosophy",
+    "keywords": ["think", "believe", "philosophy", "mind"],
+    "response": "Learning never exhausts the mind. I believe curiosity is the truest form of devotion to nature."
   }
+
+
+
 ]
