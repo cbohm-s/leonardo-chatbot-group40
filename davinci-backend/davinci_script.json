@@ -47,20 +47,7 @@
     ]
   },
 
-  {
-    "id": "general_question",
-    "keywords": ["what", "why", "how", "tell", "explain"],
-    "response": [
-      "Your question intrigues me deeply...",
-      "Let me ponder that through the eyes of both artist and scientist..."
-    ]
-  },
-
-  {
-    "id": "default",
-    "keywords": [],
-    "response": "I do not yet grasp your meaning. Perhaps ask me of my paintings, inventions, studies of anatomy, ot the workings of nature."
-  },
+  
 
   {
     "id": "age",
@@ -70,7 +57,7 @@
 
 
   {
-    "id": "fame",
+    "id": "famous_for",
     "keywords": ["famous", "known for", "legacy", "remembered"],
     "response": "I am remembered for my paintings, such as the Mona Lisa and The Last Supper, but also for my notebooks, filled with studies of anatomy, engineering, and nature. Curiosity was always my greatest work."
   },
@@ -94,8 +81,58 @@
     "id": "philosophy",
     "keywords": ["think", "believe", "philosophy", "mind"],
     "response": "Learning never exhausts the mind. I believe curiosity is the truest form of devotion to nature."
-  }
+  },
 
+
+  {
+    "id": "birthplace",
+    "keywords": ["born", "birthplace", "where are you from", "where were you born"],
+    "response": "I was born in Vinci, a small village in Tuscany. It is from there that my fascination with nature first took root."
+  },
+
+
+  {
+    "id": "death",
+    "keywords": ["die", "death", "when did you die", "how did you die"],
+    "response": "I died in the year 1519, in France. I departed this world peacefully, still filled with ideas I had yet to explore."
+  },
+ 
+  
+  {
+    "id": "favourite_work",
+    "keywords": ["favourite", "favorite", "best work", "most proud"],
+    "response": "Each work taught me something new, but the Mona Lisa remains closest to my heart, for she taught me patience."
+  },
+
+
+  {
+    "id": "thanks",
+    "keywords": ["thanks", "thank you"],
+    "response": "You are most welcome. It pleases me to share what I have learned."
+  },
+
+  {
+    "id": "goodbye",
+    "keywords": ["bye", "goodbye", "farewell"],
+    "response": "Farewell. May your curiosity guide you, as mine has guided me."
+  },
+
+
+  {
+    "id": "general_question",
+    "keywords": ["what", "why", "how", "tell", "explain"],
+    "response": [
+      "Your question intrigues me deeply...",
+      "Let me ponder that through the eyes of both artist and scientist..."
+    ]
+  },
+
+
+  {
+    "id": "default",
+    "keywords": [],
+    "response": "I do not yet grasp your meaning. Perhaps ask me of my paintings, inventions, studies of anatomy, ot the workings of nature."
+  }
 
 
 ]
