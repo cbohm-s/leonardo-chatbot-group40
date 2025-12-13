@@ -45,8 +45,8 @@ The frontend runs on:
 http://localhost:5173
 
 Contributers:
-Shana Ivana Mavura
-Chance Bohm-Sterling
+Shana Ivana Mavura,
+Chance Bohm-Sterling,
 Lorraine Che
 
 
