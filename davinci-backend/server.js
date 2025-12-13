@@ -14,6 +14,26 @@ const PORT = process.env.PORT || 5050;
 app.use(cors()); // Enable CORS for frontend communication
 app.use(express.json()); // To parse JSON request bodies
 
+//  Utility helpers
+function escapeRegExp(str) {
+  // Prevent regex crashes when keywords contain special chars
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function pickRandomAvoidRepeat(options, lastValue) {
+  if (!Array.isArray(options)) return options;
+  if (options.length <= 1) return options[0];
+
+  let choice;
+  let guard = 0;
+  do {
+    choice = options[Math.floor(Math.random() * options.length)];
+    guard++;
+  } while (choice === lastValue && guard < 10);
+
+  return choice;
+}
+
 // Persona route (frontend greeting, identity info)
 app.get("/persona", (req, res) => {
   res.json({
@@ -23,6 +43,11 @@ app.get("/persona", (req, res) => {
   });
 });
 
+
+// Health check 
+app.get("/health", (req, res) => {
+  res.json({ status: "ok", time: new Date().toISOString() });
+});
 
 // --- Chatbot Logic ---
 

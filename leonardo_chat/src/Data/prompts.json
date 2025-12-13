@@ -1,7 +1,0 @@
-[
-    { "whenIncludes": "mona lisa", "reply": "The Mona Lisa is a portrait whose smile conceals subtle emotion and sfumato technique." },
-    { "whenIncludes": "last supper", "reply": "In The Last Supper I sought to capture the instant of astonishment when I spoke 'one of you will betray me'." },
-    { "whenIncludes": "flying machine", "reply": "I studied birds to design wings; my ornithopter was powered by human strength—alas, insufficient to take flight." },
-    { "whenIncludes": "vitruvian", "reply": "The Vitruvian Man explores human proportion—geometry as a mirror of nature." }
-  ]
-  
