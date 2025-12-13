@@ -14,6 +14,16 @@ const PORT = process.env.PORT || 5050;
 app.use(cors()); // Enable CORS for frontend communication
 app.use(express.json()); // To parse JSON request bodies
 
+// Persona route (frontend greeting, identity info)
+app.get("/persona", (req, res) => {
+  res.json({
+    name: "Leonardo da Vinci",
+    greeting: "Buongiorno! I am Leonardo da Vinci. Ask what you seek—paintings, invention, or the many mysteries of nature.",
+    fallback: "A curious question! Yet I must reflect... Ask me of the Mona Lisa, flight, or the human form."
+  });
+});
+
+
 // --- Chatbot Logic ---
 
 // Load Davinci script JSON

@@ -1,16 +1,33 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import persona from "../Data/persona.json";
 
 export default function ChatBox() {
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([
-    { from: "leo", text: persona.greeting }
-  ]);
+  const [messages, setMessages] = useState([]); // greeting loaded from backend
   const [isThinking, setIsThinking] = useState(false);
   const scroller = useRef(null);
   const navigate = useNavigate();
 
+  // Load persona (greeting) from backend
+  useEffect(() => {
+    async function loadPersona() {
+      try {
+        const res = await fetch("http://localhost:5050/persona");
+        const data = await res.json();
+
+        setMessages([{ from: "leo", text: data.greeting }]);
+      } catch (err) {
+        console.error("Persona load error:", err);
+        setMessages([
+          { from: "leo", text: "Buongiorno! I am Leonardo da Vinci. What do you seek?" }
+        ]);
+      }
+    }
+
+    loadPersona();
+  }, []);
+
+  // Auto-scroll
   useEffect(() => {
     if (scroller.current) {
       scroller.current.scrollTo({
@@ -21,55 +38,51 @@ export default function ChatBox() {
   }, [messages]);
 
   async function sendToBackend(userMessage) {
-  try {
-    const res = await fetch("http://localhost:5050/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: userMessage })
-    });
+    try {
+      const res = await fetch("http://localhost:5050/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userMessage }),
+      });
 
-    const data = await res.json();
-    return data.response; 
-  } catch (err) {
-    console.error("Backend error:", err);
-    return "My thoughts elude me at the moment…";
+      const data = await res.json();
+      return data.response;
+    } catch (err) {
+      console.error("Backend error:", err);
+      return "My thoughts elude me at the moment…";
+    }
   }
-}
 
   async function handleSend() {
     if (isThinking) return;
-  const text = message.trim();
-  if (!text) return;
-  
-<button
-  className="btn primary"
-  onClick={handleSend}
-  disabled={isThinking}
->
-  Send ➜
-</button>
 
-  // Add user message
-  setMessages(prev => [...prev, { from: "user", text }]);
-  setMessage("");
-  setIsThinking(true);
+    const text = message.trim();
+    if (!text) return;
 
-  // Get response from backend
-  const reply = await sendToBackend(text);
+    setMessages((prev) => [...prev, { from: "user", text }]);
+    setMessage("");
+    setIsThinking(true);
 
-  // Add Leonardo's message
-  setMessages(prev => [...prev, { from: "leo", text: reply }]);
-  setIsThinking(false);
-}
+    const reply = await sendToBackend(text);
 
+    setMessages((prev) => [...prev, { from: "leo", text: reply }]);
+    setIsThinking(false);
+  }
 
-  function handleNewChat() {
-    setMessages([{ from: "leo", text: persona.greeting }]);
+  async function handleNewChat() {
+    // Re-fetch persona greeting for a clean reset
+    try {
+      const res = await fetch("http://localhost:5050/persona");
+      const data = await res.json();
+      setMessages([{ from: "leo", text: data.greeting }]);
+    } catch {
+      setMessages([{ from: "leo", text: "Buongiorno! Ask me of art or invention." }]);
+    }
     setMessage("");
   }
 
   function handleEndChat() {
-    navigate("/");   // go back to Home page
+    navigate("/");
   }
 
   return (
@@ -83,36 +96,23 @@ export default function ChatBox() {
         </div>
       </header>
 
-      <div
-        className="chat-window framed"
-        ref={scroller}
-        role="log"
-        aria-live="polite"
-      >
+      <div className="chat-window framed" ref={scroller} role="log" aria-live="polite">
         {messages.map((m, i) => (
           <div
             key={i}
             className={`msg-row ${m.from === "leo" ? "from-leo" : "from-user"}`}
           >
             {m.from === "leo" && (
-              <div className="avatar avatar-leo" aria-hidden="true">
-                L
-              </div>
+              <div className="avatar avatar-leo" aria-hidden="true">L</div>
             )}
 
             <div className="msg-bubble-block">
-              <span className="msg-name">
-                {m.from === "leo" ? "Leonardo" : "You"}
-              </span>
-              <div className="bubble">
-                {m.text}
-              </div>
+              <span className="msg-name">{m.from === "leo" ? "Leonardo" : "You"}</span>
+              <div className="bubble">{m.text}</div>
             </div>
 
             {m.from === "user" && (
-              <div className="avatar avatar-user" aria-hidden="true">
-                U
-              </div>
+              <div className="avatar avatar-user" aria-hidden="true">U</div>
             )}
           </div>
         ))}
@@ -122,9 +122,7 @@ export default function ChatBox() {
             <div className="avatar avatar-leo" aria-hidden="true">L</div>
             <div className="msg-bubble-block">
               <span className="msg-name">Leonardo</span>
-              <div className="bubble thinking">
-                Thinking…
-              </div>
+              <div className="bubble thinking">Thinking…</div>
             </div>
           </div>
         )}
@@ -137,19 +135,22 @@ export default function ChatBox() {
             placeholder="Type your question here..."
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleSend()}
+            onKeyDown={(e) => e.key === "Enter" && !isThinking && handleSend()}
+            disabled={isThinking}
           />
+
           <button
             className="btn primary"
             onClick={handleSend}
             aria-label="Send message"
+            disabled={isThinking}
           >
             Send ➜
           </button>
         </div>
 
         <div className="chat-footer-buttons">
-          <button className="btn subtle" onClick={handleNewChat}>
+          <button className="btn subtle" onClick={handleNewChat} disabled={isThinking}>
             New Chat
           </button>
           <button className="btn danger" onClick={handleEndChat}>
